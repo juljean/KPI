@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2019.3.5\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\Stefanyshyn_5.dir/objects.a
+C:\Users\Jul\Documents\mingw32\bin\ar.exe cr CMakeFiles\Stefanyshyn_5.dir/objects.a @CMakeFiles\Stefanyshyn_5.dir\objects1.rsp
+C:\Users\Jul\Documents\mingw32\bin\gcc.exe -g   -Wl,--whole-archive CMakeFiles\Stefanyshyn_5.dir/objects.a -Wl,--no-whole-archive  -o Stefanyshyn_5.exe -Wl,--out-implib,libStefanyshyn_5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Stefanyshyn_5.dir\linklibs.rsp
