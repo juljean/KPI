@@ -1,0 +1,3 @@
+C:/Users/Jul/CLionProjects/Stefanyshyn 7_2/cmake-build-debug/CMakeFiles/Stefanyshyn_7_2.dir
+C:/Users/Jul/CLionProjects/Stefanyshyn 7_2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Jul/CLionProjects/Stefanyshyn 7_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
