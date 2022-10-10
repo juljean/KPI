@@ -7,7 +7,7 @@ class Neuron:
         """
         Initialization of parameters in class
         :param x: list of float numbers, input signals
-        :param yr: expected output value
+        :param yr: float, expected output value
         :param dd: float, allowed error
         :param y_act: activation function
         """
@@ -42,14 +42,13 @@ class Neuron:
     def recognition(self):
         """
         Recognition mode
-        :return:
+        :return: float, predicted y
         """
         xs = 0
         for n in range(self.x_num):
             xs += eval(f"x" + str(n)) * eval(f"self.w" + str(n))
         y = self.y_act(xs)
-        dn = abs((self.yr - y) / self.yr)
-        print("y: ", y, "dn:", dn)
+        return y
 
 
 neur = Neuron([1, 3, 5, 7], 0.3, 0.1)
