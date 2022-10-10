@@ -39,9 +39,10 @@ class Neuron:
             return self.learn()
         return self.w
 
-    def recognition(self):
+    def recognition(self, x):
         """
         Recognition mode
+        :param x: list of float numbers, input signals
         :return: float, predicted y
         """
         xs = 0

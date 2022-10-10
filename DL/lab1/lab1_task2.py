@@ -2,7 +2,7 @@ import math
 import random
 
 
-class TwoLayerPerceptron:
+class TwoLayerPerceptron111:
     def __init__(self, x, yr, dd, y_act=lambda x: 1 / (1 + math.exp(-x))):
         """
         Initialization of parameters in class
@@ -21,7 +21,7 @@ class TwoLayerPerceptron:
     def learn(self):
         """
         Learning mode
-        :return: list with weights values
+        :return: list of float numbers, normalized weights
         """
         x2 = self.w1 * self.x
         y2 = self.y_act(x2)
@@ -40,17 +40,18 @@ class TwoLayerPerceptron:
             return self.learn()
         return [self.w1, self.w2]
 
-    def recognition(self):
+    def recognition(self, x):
         """
         Recognition mode
+        :param x: int, input signal
         :return: float, predicted y
         """
-        x2 = self.w1 * self.x
+        x2 = self.w1 * x
         y2 = self.y_act(x2)
         x3 = self.w2 * y2
         y3 = self.y_act(x3)
         return y3
 
 
-perceptron = TwoLayerPerceptron(3, 0.4, 0.1)
+perceptron = TwoLayerPerceptron111(3, 0.4, 0.1)
 print(*perceptron.learn())
