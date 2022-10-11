@@ -14,7 +14,7 @@ class Neuron:
         self.x = x
         # Number of signals
         self.x_num = len(x)
-        self.w = [random.random() * 0.01 for i in range(self.x_num)]
+        self.w = [random.random() * 0.1 for i in range(self.x_num)]
         self.dd = dd
         self.yr = yr
         self.y_act = y_act
@@ -24,15 +24,17 @@ class Neuron:
         Learning mode
         :return: list of float numbers, normalized weights
         """
+        # Input operator
         xs = 0
         for ind in range(self.x_num):
             xs += self.x[ind] * self.w[ind]
+        # Operator of activation
         y = self.y_act(xs)
-        # current error for calculated y
+        # Calculation of current error for y
         dn = abs((self.yr - y) / self.yr)
         print("y: ", y, "dn:", dn)
         if dn > self.dd:
-            # weights normalization
+            # Weights normalization
             q = y * (1 - y) * (self.yr - y)
             dw = [self.x[ind] * q for ind in range(self.x_num)]
             self.w = [self.w[ind] + dw[ind] for ind in range(self.x_num)]
