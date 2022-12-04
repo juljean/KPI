@@ -64,6 +64,10 @@ def simpson_rule(x, h):
     return h/3 * sum(x[0:-1:2] + 4*x[1::2] + x[2::2])
 
 
+def absolute_error_calculation(x1, x2):
+    return [sum(abs(x1[i] - x2[i])for i in range(len(x1)))][0]
+
+
 def main():
     # Start-point of interpolation interval
     a = 1
@@ -76,15 +80,24 @@ def main():
 
     interval = [a, b]
     x, y = coordinate_sequences(interval[0], n, h)
-    # Integral Sum calculated by Simpson Rule
-    print(simpson_rule(y, h))
-    # Integral Sum calculated by Newton-Leibniz Formula
-    print(integral(b) - integral(a))
 
     # Local Derivatives calculated by Lagrange Rule
-    print(lagrange_rule(y, n, h))
+    lagrange_rule_result = lagrange_rule(y, n, h)
     # Local Derivatives found directly from formula
-    print([derivative(el) for el in x])
+    derivative_formula_result = [derivative(el) for el in x]
+
+    print(f"Result found directly from by Lagrange Rule: {lagrange_rule_result}")
+    print(f"Result found directly from f' formula: {derivative_formula_result}")
+    print(f"Absolute error between results equals to: {absolute_error_calculation(lagrange_rule_result, derivative_formula_result)}")
+
+    # Integral Sum calculated by Simpson Rule
+    simpson_result = simpson_rule(y, h)
+    # Integral Sum calculated by Newton-Leibniz Formula
+    newton_leibniz_result = integral(b) - integral(a)
+
+    print(f"Integral Sum calculated by Simpson Rule: {simpson_result}")
+    print(f"Integral Sum calculated by Newton-Leibniz Formula: {newton_leibniz_result}")
+    print(f"Absolute error between results equals to: {abs(simpson_result - newton_leibniz_result)}")
 
 
 main()
