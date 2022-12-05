@@ -44,15 +44,15 @@ def lagrange_rule(y, n, h):
     return result
 
 
-def simpson_rule(x, h):
+def simpson_rule(y, h):
     """
     Function to calculate integral sum by Simpson Rule
-    :param x: array of float; sequence of interpolation knots
+    :param y: array of float; sequence of interpolation knots
     :param h: constant step
     :return: float, integral sum, calculated by Simpson Formula
     """
     # first value + last value + doubled even values + quadrupled odd values
-    return h/3 * sum(x[0:-1:2] + 4*x[1::2] + x[2::2])
+    return h/3 * sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
 
 
 def absolute_error_calculation(x1, x2):
