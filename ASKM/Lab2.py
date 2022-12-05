@@ -1,6 +1,15 @@
+def antiderivative(x):
+    """
+    Antiderivative function for Variant 8
+    :param x: float, function variable
+    :return: function value for assigned variable
+    """
+    return (2*(x+2)**(3/2)*(15*x**2-24*x+32))/105
+
+
 def func(x):
     """
-    Function for Variant 8
+    Derivative function of the given function
     :param x: float, function variable
     :return: function value for assigned variable
     """
@@ -16,26 +25,8 @@ def coordinate_sequences(a, n, h):
     :return: arrays, X, Y coordinate sequences
     """
     x_values = [round(a + h * i, 2) for i in range(n + 1)]
-    y_values = [func(x) for x in x_values]
+    y_values = [antiderivative(x) for x in x_values]
     return x_values, y_values
-
-
-def derivative(x):
-    """
-    Derivative function of the given function
-    :param x: float, function variable
-    :return: function value for assigned variable
-    """
-    return (x*(5*x + 8))/(2*pow(x+2, 0.5))
-
-
-def integral(x):
-    """
-    Integral function of the given function
-    :param x: float, function variable
-    :return: function value for assigned variable
-    """
-    return (2*(x+2)**(3/2)*(15*x**2-24*x+32))/105
 
 
 def lagrange_rule(y, n, h):
@@ -84,16 +75,16 @@ def main():
     # Local Derivatives calculated by Lagrange Rule
     lagrange_rule_result = lagrange_rule(y, n, h)
     # Local Derivatives found directly from formula
-    derivative_formula_result = [derivative(el) for el in x]
+    derivative_formula_result = [func(el) for el in x]
 
     print(f"Result found directly from by Lagrange Rule: {lagrange_rule_result}")
-    print(f"Result found directly from f' formula: {derivative_formula_result}")
+    print(f"Result found directly from f formula: {derivative_formula_result}")
     print(f"Absolute error between results equals to: {absolute_error_calculation(lagrange_rule_result, derivative_formula_result)}")
 
     # Integral Sum calculated by Simpson Rule
-    simpson_result = simpson_rule(y, h)
+    simpson_result = simpson_rule(derivative_formula_result, h)
     # Integral Sum calculated by Newton-Leibniz Formula
-    newton_leibniz_result = integral(b) - integral(a)
+    newton_leibniz_result = antiderivative(b) - antiderivative(a)
 
     print(f"Integral Sum calculated by Simpson Rule: {simpson_result}")
     print(f"Integral Sum calculated by Newton-Leibniz Formula: {newton_leibniz_result}")
