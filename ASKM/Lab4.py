@@ -36,4 +36,5 @@ data = {
     'Executing time': [end_time1-start_time, end_time2-end_time1, end_time3-end_time2, end_time4-end_time3]
 }
 df = pd.DataFrame(data)
-print(df)
+with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
+    print(df)
